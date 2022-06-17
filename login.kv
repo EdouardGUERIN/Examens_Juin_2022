@@ -1,0 +1,229 @@
+windowManager:
+	loginWindow:
+	signupWindow:
+	logDataWindow:
+	galleryWindow:
+	buyWindow:
+	sellWindow:
+
+<loginWindow>:
+	email : email
+	pwd : pwd
+	FloatLayout:
+		size: root.width, root.height
+		Label:
+			text : "EMAIL: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.25, "top":0.9}
+		TextInput:
+			id : email
+			multiline :False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.9}
+		Label:
+			text : "Mot de passe: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.7}
+		TextInput:
+			id : pwd
+			multiline :False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.7}
+		Button:
+			text : "Créer un utillisateur"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.33, "top" : 0.4}
+			on_release:
+				app.root.current = 'signup'
+				root.manager.transition.direction = "down"
+		Button:
+			text : "Connexion"
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.39, "top" : 0.2}
+			on_release:
+				root.validate()
+				root.manager.transition.direction = "up"
+
+<signupWindow>:
+	name2 : name2
+	email : email
+	pwd : pwd
+	bod : bod
+	wallet : wallet
+	FloatLayout:
+		Label:
+			text : "Nom: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.25, "top":0.9}
+		TextInput:
+			id : name2
+			multiline : False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.9}
+		Label:
+			text : "Email: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.7}
+		TextInput:
+			id : email
+			multiline : False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.7}
+		Label:
+			text : "Mot de passe: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.25, "top" : 0.5}
+		TextInput:
+			id : pwd
+			multiline : False
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.45, "top" : 0.5}
+        Label:
+			text : "Date de naissance: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.25, "top":0.35}
+		TextInput:
+			id : bod
+			multiline : False
+			hint_text: "O1/O1/1980"
+			size_hint : 0.3, 0.05
+			pos_hint : {"x" : 0.45, "top" : 0.35}
+        Label:
+			text : "Portefeuille: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.25, "top":0.25}
+		TextInput:
+			id : wallet
+			multiline : False
+			size_hint : 0.3, 0.05
+			pos_hint : {"x" : 0.45, "top" : 0.25}
+		Button:
+			text : "Valider"
+			size_hint : 0.3, 0.1
+			pos_hint : {"x" : 0.39, "top" : 0.1}
+			on_press :
+				root.signupbtn()
+				root.manager.transition.direction = "up"
+
+<logDataWindow>:
+	info : info
+	FloatLayout:
+		Label:
+			id : info
+			size_hint : 0.8, 0.2
+			pos_hint : {"x" : 0.15, "top" : 0.8}
+			text : "Cat.Chat DB : Menu"
+		Button:
+			text : "Retour à l'écran de connexion"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.33, "top" : 0.55}
+			on_release:
+				app.root.current = 'login'
+				root.manager.transition.direction = "down"
+		Button:
+			text : "Gallerie"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.33, "top" : 0.4}
+			on_release:
+				app.root.current = 'gallery'
+				root.manager.transition.direction = "up"
+        Button:
+			text : "Achat"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.33, "top" : 0.25}
+			on_release:
+				app.root.current = 'buy'
+				root.manager.transition.direction = "right"
+        Button:
+			text : "Vente"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.33, "top" : 0.15}
+			on_release:
+				app.root.current = 'sell'
+				root.manager.transition.direction = "left"
+
+
+<galleryWindow>:		
+    view: view
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            size: (64, 64)
+            size_hint: (1, None)
+
+            Label:
+                text: "Cat.Chat DB : Gallerie"
+                color: (1, 1, 1, 1)
+                background_color: (.3, .3, .3, 1)
+
+        ScrollView:
+            id: view
+            
+        Button:
+    		text : "Retour au Menu"
+    		size_hint : 0.4, 0.1
+    		pos_hint : {"x" : 0.33, "top" : 0.1}
+    		on_release:
+    			app.root.current = 'logdata'
+    			root.manager.transition.direction = "down"
+            
+<buyWindow>:		
+    view: view
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            size: (64, 64)
+            size_hint: (1, None)
+
+            Label:
+                text: "Cat.Chat DB : Achat"
+                color: (1, 1, 1, 1)
+                background_color: (.3, .3, .3, 1)
+
+        ScrollView:
+            id: view
+            
+        Button:
+        	text : "Retour au Menu"
+    		size_hint : 0.4, 0.1
+    		pos_hint : {"x" : 0.33, "top" : 0.1}
+    		on_release:
+    			app.root.current = 'logdata'
+    			root.manager.transition.direction = "left"
+            
+<sellWindow>:		
+    view: view
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            size: (64, 64)
+            size_hint: (1, None)
+
+            Label:
+                text: "Cat.Chat DB : Vente"
+                color: (1, 1, 1, 1)
+                background_color: (.3, .3, .3, 1)
+
+        ScrollView:
+            id: view   
+                      
+		Button:
+			text : "Retour au Menu"
+			size_hint : 0.4, 0.1
+			pos_hint : {"x" : 0.33, "top" : 0.1}
+			on_release:
+				app.root.current = 'logdata'
+				root.manager.transition.direction = "right"
+		
+
+<P>:
+	Label:
+		text : "Informations invalides"
+		size_hint : 0.2, 0.1
+		pos_hint : {"x" : 0.3, "top" : 0.8}
